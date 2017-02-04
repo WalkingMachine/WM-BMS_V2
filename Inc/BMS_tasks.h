@@ -15,6 +15,8 @@
 
 #define BMS_IDLE_SLEEP 0
 
+// Everything that deals with canOpen will be remove
+
 // Task Priorities
 #define MESSAGING_PRIORITY          configMAX_PRIORITIES - 1 // Blocking Thread Event Driven
 #define CAN_IN_PRIORITY             configMAX_PRIORITIES - 1 // Blocking Thread Event Driven
@@ -22,6 +24,7 @@
 #define CAN_OPEN_OD_READ_PRIORITY   configMAX_PRIORITIES - 2 // Blocking Thread Event Driven
 #define CAN_OPEN_OD_WRITE_PRIORITY  configMAX_PRIORITIES - 2 // Blocking Thread Event Driven
 #define CAN_OPEN_RX_PRIORITY        configMAX_PRIORITIES - 2 // Blocking Thread Event Driven
+#define MACHINE_PRIORITY        	configMAX_PRIORITIES - 2 // Blocking Thread Event Driven
 #define LED_PRIORITY                configMAX_PRIORITIES - 3 // Blocking Thread Time Driven
 #define MONITOR_PRIORITY            configMAX_PRIORITIES - 3 // Blocking Thread Time Driven
 #define CAN_OPEN_PROCESS_PRIORITY   configMAX_PRIORITIES - 4 // Non-Blocking Thread (Idle)
@@ -47,7 +50,7 @@ typedef struct threadShared {
 void createMonitorTask(threadShared_t *critical);
 void createStatusLEDTask(threadShared_t *critical);
 void createCanTask(threadShared_t *critical);
-void createCanOpenTasks(threadShared_t *critical);
+void createMachineTasks(threadShared_t *critical);
 void createMessageCenterTask(threadShared_t *critical);
 
 #endif /* BMS_TASKS_H_ */
